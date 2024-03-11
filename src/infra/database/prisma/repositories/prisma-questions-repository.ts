@@ -1,12 +1,12 @@
 import { PaginationParams } from '@/core/repositories/pagination-params'
-import { QuestionRepository } from '@/domain/forum/application/repositories/questions-repository'
+import { QuestionsRepository } from '@/domain/forum/application/repositories/questions-repository'
 import { Question } from '@/domain/forum/enterprise/entities/question'
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../prisma.service'
 import { PrismaQuestionMapper } from '../mappers/prisma-question-mapper'
 
 @Injectable()
-export class PrismaQuestionRepository implements QuestionRepository {
+export class PrismaQuestionsRepository implements QuestionsRepository {
   constructor(private prisma: PrismaService) {}
 
   async findById(id: string): Promise<Question | null> {
@@ -42,7 +42,7 @@ export class PrismaQuestionRepository implements QuestionRepository {
 
     await this.prisma.question.update({
       where: {
-        id: data.id,
+        id: question.id.toString(),
       },
       data,
     })

@@ -1,5 +1,5 @@
 import { Either, left, right } from '@/core/either'
-import { QuestionRepository } from '../repositories/questions-repository'
+import { QuestionsRepository } from '../repositories/questions-repository'
 import { ResourceNorFoundError } from '@/core/erros/errors/resource-not-found-error'
 import { NotAllowedError } from '@/core/erros/errors/not-allowed-error'
 
@@ -14,7 +14,7 @@ type DeleteQuestionUseCaseResponse = Either<
 >
 
 export class DeleteQuestionUseCase {
-  constructor(private questionRepository: QuestionRepository) {}
+  constructor(private questionRepository: QuestionsRepository) {}
 
   async execute({
     questionId,
